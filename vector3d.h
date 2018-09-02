@@ -1,6 +1,9 @@
 #ifndef VECTOR3D_H
 #define VECTOR3D_H
 
+using std::endl;
+using std::ostream;
+
 template<typename T>
 class Vector3d {
 	private:
@@ -57,10 +60,10 @@ class Vector3d {
 		}
 
 		// output
-		friend std::ostream & operator << (std::ostream & os, const Vector3d<T> & v) {
+		friend ostream & operator << (ostream & os, const Vector3d<T> & v) {
 			os << "[" << v.x << ", " << v.y << "," << v.z << "]" << endl;
-			return 0s;
+			return os;
 		}
-}
+};
 
 #endif

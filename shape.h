@@ -9,6 +9,7 @@ class Shape {
 	private:
 		Vector3df surfaceColor;
 		Vector3df emissionColor;
+	protected:
 		float transparency;
 		float reflection;
 	public:
@@ -24,7 +25,7 @@ class Shape {
 				const Vector3df &rayOrig,
 				const Vector3df &rayDir,
 				float &t0,
-				float &t1) const {};
+				float &t1) const = 0;
 };
 
 #endif
