@@ -8,6 +8,8 @@
 #include <boost/qvm/vec_access.hpp>
 #include <boost/qvm/vec_operations.hpp>
 
+#include "config.h"
+
 using namespace boost;
 
 using Shape = float;//TODO change
@@ -15,34 +17,18 @@ using World = std::vector<std::unique_ptr<Shape>>;
 using Color = qvm::vec<float, 3>;
 using Vec = qvm::vec<float, 3>;
 
-class Config {
-public:
-    unsigned width;
-    unsigned height;
-    float fov;
-
-    float invWidth, invHeight;
-    float aspectRatio;
-    float angle;
-
-    std::string fname;
-
-    Config(unsigned _width, unsigned _height, float _fov) {
-        width = _width;
-        height = _height;
-        fov = _fov;
-
-        invWidth = 1 / float(width); invHeight = 1 / float(height);
-        aspectRatio = width / float(height);
-        angle = tan(M_PI * 0.5 * fov / 180.);
-
-        fname = "./untitled.ppm";
-    }
-};
-
-std::shared_ptr<World> get_world() {
+std::shared_ptr<World> get_world() { // dont really get the point of this function?
     std::shared_ptr<World> world = std::make_shared<World>(World());
     return world;
+}
+
+Color trace(const Vec&, const Vec&, std::shared_ptr<World>, const int&);
+void render(std::shared_ptr<World>, const Config&);
+
+int main(int argc, char **argv) {
+    qvm::vec<float,3> v{0, 0, 1}; // is there a reason why you didnt use Vec here?
+    qvm::A<1>(v) += 1; // what does this line do?
+    return 0;
 }
 
 Color trace(
@@ -74,10 +60,4 @@ void render(std::shared_ptr<World> world, const Config& config) {
             (unsigned char)(std::min(float(1), qvm::A<2>(image[i])) * 255);
     }
     ofs.close(); 
-}
-
-int main(int argc, char **argv) {
-    qvm::vec<float,3> v{0, 0, 1};
-    qvm::A<1>(v) += 1;
-    return 0;
 }
