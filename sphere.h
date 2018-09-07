@@ -1,23 +1,25 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
+#include <boost/qvm/vec.hpp>
 #include "shape.h" 
-#include "vector3d.h"
 
-using Vector3df = Vector3d<float>;
+using namespace boost;
+
+using Vec = qvm::vec<float, 3>;
 
 class Sphere : public Shape {
 	private:
-		Vector3df center;
+		Vec center;
 		float radius;
 		float radius_squared;
 	public:
 		Sphere(
-				const Vector3df &_center,
+				const Vec &_center,
 				const float &_radius,
 				const float &_radius_squared,
-				const Vector3df &_surface_color,
-				const Vector3df &_emission_color,
+				const Vec &_surface_color,
+				const Vec &_emission_color,
 				const float &_transparency,
 				const float &_reflection
 			) : Shape(_surface_color, _emission_color, 
@@ -27,8 +29,8 @@ class Sphere : public Shape {
 		{}
 		
 		virtual bool intersect(
-				const Vector3df &rayOrig, 
-				const Vector3df &rayDir,
+				const Vec &rayOrig, 
+				const Vec &rayDir,
 				const float &t0,
 				const float &t1) const override {
 			if (true)

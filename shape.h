@@ -1,29 +1,30 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
-#include "vector3d.h"
+#include <boost/qvm/vec.hpp>
 
-using Vector3df = Vector3d<float>;
+using namespace boost;
+
+using Vec = qvm::vec<float, 3>;
 
 class Shape {
-	private:
-		Vector3df surfaceColor;
-		Vector3df emissionColor;
 	protected:
+		Vec surfaceColor;
+		Vec emissionColor;
 		float transparency;
 		float reflection;
 	public:
 		Shape(
-				const Vector3df &_surfaceColor,
-				const Vector3df &_emissionColor,
+				const Vec &_surfaceColor,
+				const Vec &_emissionColor,
 				const float &_transparency,
 				const float &_reflection
 			) : surfaceColor(_surfaceColor), emissionColor(_emissionColor), 
 				transparency(_transparency), reflection(_reflection) 
 		{}
 		virtual bool intersect(
-				const Vector3df &rayOrig,
-				const Vector3df &rayDir,
+				const Vec &rayOrig,
+				const Vec &rayDir,
 				const float &t0,
 				const float &t1) const = 0;
 };

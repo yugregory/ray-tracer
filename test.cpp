@@ -1,10 +1,13 @@
 #include <iostream>
+#include <boost/qvm/vec.hpp>
 
-#include "vector3d.h"
 #include "sphere.h"
+
+using namespace boost;
 
 using std::cout;
 using std::endl;
+using Vec = qvm::vec<float, 3>;
 
 void test_sphere();
 
@@ -14,9 +17,9 @@ int main() {
 }
 
 void test_sphere() {
-	const Vector3df center;
-	const Vector3df surface_color;
-	const Vector3df emission_color;
+	Vec center;
+	Vec surface_color;
+	Vec emission_color;
 	Sphere object(center, 2, 4, surface_color, emission_color, 10, 10);
 	cout << object.intersect(center, surface_color, 10, 20) << endl;
 }
