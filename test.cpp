@@ -23,5 +23,8 @@ void test_sphere() {
 	Sphere object(center, 2, surface_color, emission_color, 10, 10);
 	float temp1 = 10;
 	float temp2 = 20;
-	cout << object.intersect(center, surface_color, temp1, temp2) << endl;
+	// test case 1
+	if (!object.intersect(center, surface_color, temp1, temp2))
+		cout << "these vector should be intersecting: ..." << endl;
+	return;
 }
