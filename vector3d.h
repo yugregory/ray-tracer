@@ -12,7 +12,7 @@ class Vector3d {
 		// constructors
 		Vector3d() : x(T(0)), y(T(0)), z(T(0)) {}
 		Vector3d(T equiv) : x(equiv), y(equiv), z(equiv) {}
-		Vector3d(T _x, T _y, T _z) : x(_x), y(_y), z(_z) {}
+		Vector3d(T&& _x, T _y, T _z) : x(_x), y(_y), z(_z) {}
 		
 		T length() {
 			return (x*x) + (y*y) + (z*z);

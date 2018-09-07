@@ -24,8 +24,8 @@ class Shape {
 		virtual bool intersect(
 				const Vector3df &rayOrig,
 				const Vector3df &rayDir,
-				float &t0,
-				float &t1) const = 0;
+				const float &t0,
+				const float &t1) const = 0;
 };
 
 #endif

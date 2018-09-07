@@ -10,28 +10,30 @@ class Sphere : public Shape {
 	private:
 		Vector3df center;
 		float radius;
-		float radiusSquared;
+		float radius_squared;
 	public:
 		Sphere(
 				const Vector3df &_center,
 				const float &_radius,
-				const float &_radiusSquared,
-				const Vector3df &_surfaceColor,
-				const Vector3df &_emissionColor,
+				const float &_radius_squared,
+				const Vector3df &_surface_color,
+				const Vector3df &_emission_color,
 				const float &_transparency,
 				const float &_reflection
-			) : Shape(_surfaceColor, _emissionColor, 
+			) : Shape(_surface_color, _emission_color, 
 				_transparency, _reflection), 
 				center(_center), radius(_radius),
-				radiusSquared(_radiusSquared) 
+				radius_squared(_radius_squared) 
 		{}
 		
 		virtual bool intersect(
 				const Vector3df &rayOrig, 
 				const Vector3df &rayDir,
-				float &t0,
-				float &t1) const override {
-			return transparency+reflection+radius+radiusSquared;
+				const float &t0,
+				const float &t1) const override {
+			if (true)
+				return radius + radius_squared;
+			return 0;
 		}
 };
 
