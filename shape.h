@@ -25,8 +25,8 @@ class Shape {
 		virtual bool intersect(
 				const Vec &rayOrig,
 				const Vec &rayDir,
-				const float &t0,
-				const float &t1) const = 0;
+				float &t0,
+				float &t1) const = 0;
 };
 
 #endif

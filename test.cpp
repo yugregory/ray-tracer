@@ -20,6 +20,8 @@ void test_sphere() {
 	Vec center;
 	Vec surface_color;
 	Vec emission_color;
-	Sphere object(center, 2, 4, surface_color, emission_color, 10, 10);
-	cout << object.intersect(center, surface_color, 10, 20) << endl;
+	Sphere object(center, 2, surface_color, emission_color, 10, 10);
+	float temp1 = 10;
+	float temp2 = 20;
+	cout << object.intersect(center, surface_color, temp1, temp2) << endl;
 }
