@@ -26,8 +26,10 @@ Color trace(const Vec&, const Vec&, std::shared_ptr<World>, const int&);
 void render(std::shared_ptr<World>, const Config&);
 
 int main(int argc, char **argv) {
-    qvm::vec<float,3> v{0, 0, 1};
-    qvm::A<1>(v) += 1;
+    auto world = get_world();
+    Config config(640, 480, 30);
+
+    render(world, config);
     return 0;
 }
 
