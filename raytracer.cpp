@@ -9,11 +9,11 @@
 #include <boost/qvm/vec_operations.hpp>
 
 #include "config.h"
+#include "sphere.h"
 
 using namespace boost;
 
-using Shape = float;//TODO change
-using World = std::vector<std::unique_ptr<Shape>>;
+using World = std::vector<std::unique_ptr<Sphere>>;
 using Color = qvm::vec<float, 3>;
 using Vec = qvm::vec<float, 3>;
 

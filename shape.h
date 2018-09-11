@@ -22,11 +22,14 @@ class Shape {
 			) : surfaceColor(_surfaceColor), emissionColor(_emissionColor), 
 				transparency(_transparency), reflection(_reflection) 
 		{}
+
 		virtual bool intersect(
 				const Vec &rayOrig,
 				const Vec &rayDir,
 				float &t0,
 				float &t1) const = 0;
+
+		virtual ~Shape() = default;
 };
 
 #endif

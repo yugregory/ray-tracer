@@ -47,6 +47,8 @@ class Sphere : public Shape {
 			t1 = tca + thc;
 			return true;
 		}
+
+		~Sphere() = default;
 };
 
 #endif
