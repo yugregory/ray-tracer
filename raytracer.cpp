@@ -13,12 +13,20 @@
 
 using namespace boost;
 
-using World = std::vector<std::unique_ptr<Sphere>>;
+using World = std::vector<std::shared_ptr<Sphere>>;
 using Color = qvm::vec<float, 3>;
 using Vec = qvm::vec<float, 3>;
 
 std::shared_ptr<World> get_world() {
+    // TODO dynamically load shapes
     std::shared_ptr<World> world = std::make_shared<World>(World());
+    world->push_back(std::make_shared<Sphere>(Sphere(Vec{ 0.0, -10004, -20}, 10000, Vec{0.20, 0.20, 0.20}, 0, 0.0, Vec{0, 0, 0})));
+    world->push_back(std::make_shared<Sphere>(Sphere(Vec{ 0.0, 0, -20}, 4, Vec{1.00, 0.32, 0.36}, 1, 0.5, Vec{0, 0, 0})));
+    world->push_back(std::make_shared<Sphere>(Sphere(Vec{ 5.0, -1, -15}, 2, Vec{0.90, 0.76, 0.46}, 1, 0.0, Vec{0, 0, 0})));
+    world->push_back(std::make_shared<Sphere>(Sphere(Vec{ 5.0, 0, -25}, 3, Vec{0.65, 0.77, 0.97}, 1, 0.0, Vec{0, 0, 0})));
+    world->push_back(std::make_shared<Sphere>(Sphere(Vec{-5.5, 0, -15}, 3, Vec{0.90, 0.90, 0.90}, 1, 0.0, Vec{0, 0, 0})));
+    // light
+    world->push_back(std::make_shared<Sphere>(Sphere(Vec{ 0.0, 20, -30}, 3, Vec{0.00, 0.00, 0.00}, 0, 0.0, Vec{3, 3, 3}))); 
     return world;
 }
 
@@ -39,6 +47,18 @@ Color trace(
     std::shared_ptr<World> world,
     const int &depth
 ) {
+    float tnear = INFINITY;
+    std::shared_ptr<Sphere> sphere(nullptr);
+    for (auto& sph: *world) {
+        float t0 = INFINITY, t1 = INFINITY;
+        if (sph->intersect(rayorig, raydir, t0, t1)) {
+            if (t0 < 0) t0 = t1;
+            if (t0 < tnear) {
+                tnear = t0;
+                sphere = sph;
+            }
+        } 
+    }
     return {0, 0, 0};
 }
 

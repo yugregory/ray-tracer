@@ -21,11 +21,11 @@ class Sphere : public Shape {
                 const Vec &_center,
                 const float &_radius,
                 const Vec &_surface_color,
-                const Vec &_emission_color,
-                const float &_transparency,
-                const float &_reflection
-            ) : Shape(_surface_color, _emission_color, 
-                _transparency, _reflection), 
+                const float &_reflection = 0,
+                const float &_transparency = 0,
+                const Vec &_emission_color = {0, 0, 0}
+            ) : Shape(_surface_color, _reflection,
+                _transparency, _emission_color), 
                 center(_center), radius_squared(_radius*_radius),
                 radius(_radius)
         {}

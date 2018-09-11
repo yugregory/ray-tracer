@@ -16,9 +16,9 @@ class Shape {
     public:
         Shape(
                 const Vec &_surfaceColor,
-                const Vec &_emissionColor,
+                const float &_reflection,
                 const float &_transparency,
-                const float &_reflection
+                const Vec &_emissionColor
             ) : surfaceColor(_surfaceColor), emissionColor(_emissionColor), 
                 transparency(_transparency), reflection(_reflection) 
         {}
