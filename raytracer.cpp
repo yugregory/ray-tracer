@@ -17,7 +17,7 @@ using World = std::vector<std::unique_ptr<Sphere>>;
 using Color = qvm::vec<float, 3>;
 using Vec = qvm::vec<float, 3>;
 
-std::shared_ptr<World> get_world() { // dont really get the point of this function?
+std::shared_ptr<World> get_world() {
     std::shared_ptr<World> world = std::make_shared<World>(World());
     return world;
 }
@@ -26,8 +26,8 @@ Color trace(const Vec&, const Vec&, std::shared_ptr<World>, const int&);
 void render(std::shared_ptr<World>, const Config&);
 
 int main(int argc, char **argv) {
-    qvm::vec<float,3> v{0, 0, 1}; // is there a reason why you didnt use Vec here?
-    qvm::A<1>(v) += 1; // what does this line do?
+    qvm::vec<float,3> v{0, 0, 1};
+    qvm::A<1>(v) += 1;
     return 0;
 }
 
