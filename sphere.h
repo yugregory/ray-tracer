@@ -1,7 +1,6 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
-#include <cmath>
 #include <boost/qvm/vec.hpp>
 #include <boost/qvm/vec_operations.hpp>
 #include "shape.h" 
